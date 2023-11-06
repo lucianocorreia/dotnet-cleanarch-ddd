@@ -9,4 +9,3 @@ Content-Type: application/json
     "email": "email@valid.com",
     "password": "password"
 }
-

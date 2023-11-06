@@ -16,7 +16,7 @@ static void ConfigureServices(WebApplicationBuilder builder)
 {
     builder.Services
         .AddApplication()
-        .AddInfrastructure();
+        .AddInfrastructure(builder.Configuration);
 
     builder.Services.AddControllers();
 
