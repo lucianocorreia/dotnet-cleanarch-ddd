@@ -1,5 +1,5 @@
 
-using BuberDinner.Api.Errors;
+using BuberDinner.Api.Common.Errors;
 using BuberDinner.Api.Filters;
 using BuberDinner.Api.Middleware;
 using BuberDinner.Application;
@@ -43,11 +43,11 @@ static void ConfigureApp(WebApplication app)
     //app.UseMiddleware<ErrorHandlingMiddleware>();
 
     app.UseExceptionHandler("/error");
-    app.Map("/error", (HttpContext httpContext) =>
-    {
-        Exception? exception = httpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
-        return Results.Problem(detail: exception?.Message);
-    });
+    // app.Map("/error", (HttpContext httpContext) =>
+    // {
+    //     Exception? exception = httpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
+    //     return Results.Problem(detail: exception?.Message);
+    // });
 
     app.UseHttpsRedirection();
     app.UseAuthorization();

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 
-namespace BuberDinner.Api.Errors;
+namespace BuberDinner.Api.Common.Errors;
 
 public class BuberDinnerProblemDetailsFactory : ProblemDetailsFactory
 {
@@ -69,6 +69,18 @@ public class BuberDinnerProblemDetailsFactory : ProblemDetailsFactory
         string? detail = null,
         string? instance = null)
     {
-        throw new NotImplementedException();
+        statusCode ??= 400;
+
+        var problemDetails = new ValidationProblemDetails(modelStateDictionary)
+        {
+            Status = statusCode,
+            Type = type,
+            Detail = detail,
+            Instance = instance
+        };
+
+        ApplyProblemDetailsDefaults(httpContext, problemDetails, statusCode.Value);
+
+        return problemDetails;
     }
 }
