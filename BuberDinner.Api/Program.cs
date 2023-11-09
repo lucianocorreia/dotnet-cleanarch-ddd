@@ -1,4 +1,5 @@
 
+using BuberDinner.Api;
 using BuberDinner.Api.Common.Errors;
 using BuberDinner.Api.Filters;
 using BuberDinner.Api.Middleware;
@@ -20,16 +21,9 @@ app.Run();
 static void ConfigureServices(WebApplicationBuilder builder)
 {
     builder.Services
+        .AddPresentation()
         .AddApplication()
         .AddInfrastructure(builder.Configuration);
-
-    // builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilterAttribute>());
-    builder.Services.AddControllers();
-
-    builder.Services.AddSingleton<ProblemDetailsFactory, BuberDinnerProblemDetailsFactory>();
-
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
 }
 
 static void ConfigureApp(WebApplication app)
