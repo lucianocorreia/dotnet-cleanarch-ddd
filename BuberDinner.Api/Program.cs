@@ -44,6 +44,7 @@ static void ConfigureApp(WebApplication app)
     // });
 
     app.UseHttpsRedirection();
+    app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();
 }
