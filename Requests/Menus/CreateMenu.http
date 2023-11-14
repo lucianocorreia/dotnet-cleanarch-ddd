@@ -1,0 +1,14 @@
+@host = http://localhost:5224
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMGM2NDNkZS03NTQ1LTQ1NWItYjVlNi1hYTQxYWQ3M2U5MDEiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImVtYWlsQHZhbGlkLmNvbSIsImp0aSI6IjNiYmY1MmEzLWZiNjUtNDAyZi1hNjhmLTk5NmIxNGQ0ZDY1MCIsImV4cCI6MTY5OTk1Mzc5MywiaXNzIjoiQnViZXJEaW5uZXIiLCJhdWQiOiJCdWJlckRpbm5lciJ9.OHCSgbu7mX8dlVcW5X5ni8jNu5JzSU7-SSvVEgPPX20
+@hostId = 1
+
+POST {{host}}/hosts/{{{{hostId}}}}/menus
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Menu 1",
+    "description": "Menu 1 description",
+}
+
